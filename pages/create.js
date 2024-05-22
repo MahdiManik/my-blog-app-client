@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import PostForm from "../components/PostForm";
+// import PostForm from "../components/PostForm";
 
 const CreatePostPage = () => {
   const handleSubmit = async (formData) => {
@@ -18,7 +18,7 @@ const CreatePostPage = () => {
   return (
     <Layout>
       <h1>Create New Post</h1>
-      <PostForm onSubmit={handleSubmit} />
+      {/* <PostForm onSubmit={handleSubmit} /> */}
     </Layout>
   );
 };
