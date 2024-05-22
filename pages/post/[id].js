@@ -6,7 +6,7 @@ import Link from "next/link";
 // Fetch post data from API
 export const getStaticPaths = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/posts");
+    const res = await fetch("http://localhost:5000/api/v1/blogs");
     const posts = await res.json();
 
     const paths = posts.map((post) => ({
@@ -79,7 +79,10 @@ const PostDetails = ({ post }) => {
               Likes
             </div>
           </div>
-          <Link href="/" className="text-accent mt-5">
+          <Link
+            href="/"
+            className="text-accent  mt-8 hover:text-black btn btn-ghost w-64 mx-auto text-center bg-red-400"
+          >
             Back to Home
           </Link>
         </div>

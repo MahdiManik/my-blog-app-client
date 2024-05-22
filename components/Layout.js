@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       {/* header part */}
       <header className="bg-gray-800 p-4">
         <nav className="flex justify-center">
-          <ul className="flex space-x-4">
+          <ul className="flex justify-center items-center gap-8">
             <li>
               <Link href="/">
                 <p className="text-white hover:underline">Home</p>
