@@ -1,8 +1,8 @@
 // import Image from "next/image";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import Banner from "@/components/shared/banner";
 import PostList from "../components/PostList";
+import Banner from "@/components/shared/Banner";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -15,7 +15,7 @@ const HomePage = () => {
     };
     fetchPosts();
   }, []);
-
+  console.log(posts);
   return (
     <Layout>
       <h1 className="text-center text-5xl font-bold mt-5">
