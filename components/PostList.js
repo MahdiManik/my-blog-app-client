@@ -12,7 +12,9 @@ const PostListPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/v1/blogs");
+        const res = await fetch(
+          "https://my-blog-server-eight.vercel.app/api/v1/blogs"
+        );
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
@@ -44,7 +46,7 @@ const PostListPage = () => {
 
       if (result.isConfirmed) {
         const res = await fetch(
-          `http://localhost:5000/api/v1/delete-blog/${id}`,
+          `https://my-blog-server-eight.vercel.app/api/v1/delete-blog/${id}`,
           {
             method: "DELETE",
             headers: {

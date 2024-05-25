@@ -6,7 +6,9 @@ import Link from "next/link";
 // Fetch post data from API
 export const getStaticPaths = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/blogs");
+    const res = await fetch(
+      "https://my-blog-server-eight.vercel.app/api/v1/blogs"
+    );
     const posts = await res.json();
 
     const paths = posts.map((post) => ({
@@ -22,7 +24,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   try {
-    const res = await fetch(`http://localhost:5000/api/v1/blog/${params.id}`);
+    const res = await fetch(
+      `https://my-blog-server-eight.vercel.app/api/v1/blog/${params.id}`
+    );
     const post = await res.json();
 
     return { props: { post } };

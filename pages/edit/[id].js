@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import PostForm from "@/components/postForm";
 
-// Fetch post data from API
 export const getServerSideProps = async ({ params }) => {
   try {
-    const res = await fetch(`http://localhost:5000/api/v1/blog/${params.id}`);
+    const res = await fetch(
+      `https://my-blog-server-eight.vercel.app/api/v1/blog/${params.id}`
+    );
     const post = await res.json();
+    if (!post) {
+      throw new Error("Post not found");
+    }
 
     return { props: { post } };
   } catch (error) {
@@ -16,26 +19,30 @@ export const getServerSideProps = async ({ params }) => {
 };
 
 const EditPost = ({ post }) => {
-  const [title, setTitle] = useState(post.title);
-  const [description, setDescription] = useState(post.description);
-  const [authorName, setAuthorName] = useState(post.author_name);
-  const [authorImage, setAuthorImage] = useState(post.author_image);
-  const [blogImage, setBlogImage] = useState(post.blog_image);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleEditPost = async (e) => {
     e.preventDefault();
+
+    const form = e.target;
+    const title = form.title.value;
+    const blog_image = form.blogImage.value;
+    const description = form.description.value;
+    const publish_date = form.publishDate.value;
+    const author_name = form.authorName.value;
+
     const updatedPost = {
       title,
+      blog_image,
       description,
-      author_name: authorName,
-      author_image: authorImage,
-      blog_image: blogImage,
+      publish_date,
+      author_name,
     };
+    console.log("updatedPost", updatedPost);
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/v1/update-blog/${post.id}`,
+        `https://my-blog-server-eight.vercel.app/api/v1/update-blog/${post?.id}`,
         {
           method: "PUT",
           headers: {
@@ -45,10 +52,15 @@ const EditPost = ({ post }) => {
         }
       );
 
+      const result = await res.json(); // Parse the response
+
+      console.log("Response from backend:", result);
+
       if (res.ok) {
-        router.push(`/post/${post.id}`);
+        router.push(`/post/${post?.id}`);
       } else {
         console.error("Failed to update the post");
+        console.error("Response from backend:", result);
       }
     } catch (error) {
       console.error("Error updating post:", error);
@@ -56,71 +68,11 @@ const EditPost = ({ post }) => {
   };
 
   return (
-    <div className="w-full p-12 bg-base-100 shadow-xl">
-      <div className="card w-5/6 mx-auto">
-        <h2 className="text-center text-4xl my-5">Edit Post</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-lg">Title:</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-lg">Description:</label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-              required
-            ></textarea>
-          </div>
-          <div>
-            <label className="block text-lg">Author Name:</label>
-            <input
-              type="text"
-              value={authorName}
-              onChange={(e) => setAuthorName(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-lg">Author Image URL:</label>
-            <input
-              type="text"
-              value={authorImage}
-              onChange={(e) => setAuthorImage(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-          </div>
-          <div>
-            <label className="block text-lg">Blog Image URL:</label>
-            <input
-              type="text"
-              value={blogImage}
-              onChange={(e) => setBlogImage(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full p-2 bg-blue-500 text-white rounded"
-          >
-            Update Post
-          </button>
-          <Link
-            href={`/post/${post.id}`}
-            className="text-accent mt-5 block text-center"
-          >
-            Back to Post
-          </Link>
-        </form>
-      </div>
+    <div className="bg-white">
+      <h1 className="bg-gray-300 text-4xl font-bold p-5 my-8 text-center w-4/5 mx-auto">
+        Edit This Post
+      </h1>
+      <PostForm post={post} handleSubmit={handleEditPost} />
     </div>
   );
 };

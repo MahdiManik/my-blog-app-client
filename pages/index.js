@@ -1,9 +1,8 @@
-// import Image from "next/image";
 import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
-import Banner from "@/components/shared/Banner";
+import Banner from "@/components/ui/Banner";
 import PostCard from "@/components/ui/postsCard";
 import PostListPage from "../components/postList";
+import Layout from "@/components/Layout";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -13,7 +12,9 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/v1/blogs");
+        const res = await fetch(
+          "https://my-blog-server-eight.vercel.app/api/v1/blogs"
+        );
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }

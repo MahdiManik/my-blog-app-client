@@ -8,7 +8,7 @@ const PostCard = ({ posts }) => {
     <>
       <div className="grid grid-cols-3 justify-center items-center gap-6 pb-20">
         {posts?.map((post) => (
-          <div className="card w-full bg-base-100 shadow-xl">
+          <div key={post.id} className="card w-full bg-base-100 shadow-xl">
             <figure>
               <Image
                 src={post?.blog_image}
@@ -50,8 +50,8 @@ const PostCard = ({ posts }) => {
                 </div>
 
                 <div className="flex items-center">
-                  <AiFillLike className="text-accent text-xl" />{" "}
-                  {post?.total_likes} Likes
+                  <AiFillLike className="text-accent text-xl" />
+                  800 Likes
                 </div>
               </div>
             </div>
