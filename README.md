@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Blog App
+The Semple project aims to develop a my-blog-app website.
 
-## Getting Started
 
-First, run the development server:
+#### To see the My Blog App
+# Links
+Deployed Front-End: https://my-blog-client-beryl.vercel.app
+Deployed Back-End: https://my-blog-server-eight.vercel.app/api/v1
+Deployed Storybook: https://66516065a8055abd5b17551b--fanciful-lamington-c71c77.netlify.app/?path=/docs/configure-your-project--docs
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### My Blog Sumary - Summary
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Features
+Front-End (React + Next.js)
+Home Page: Displays a list of all blog posts.
+Create Post Page: Form to create a new blog post.
+Edit Post Page: Form to edit an existing blog post.
+Post Detail Page: Displays the details of a single blog post.
+Client-Side Routing: Implemented with Next.js.
+State Management: Utilizes React hooks.
+Back-End (Node.js + Express + PostgreSQL)
+GET /posts: Fetches all blog posts.
+GET /posts/
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+: Fetches a single blog post by ID.
+POST /posts: Creates a new blog post.
+PUT /posts/
+: Updates an existing blog post by ID.
+DELETE /posts/
+: Deletes a blog post by ID.
+Database Interaction: Uses pg library for PostgreSQL.
+Deployment
+Front-End: Deployed on Vercel.
+Back-End: Deployed on Heroku.
+Future Improvements
+Storybook.js: Integration and documentation of React components using Storybook.js.
+Enhanced Error Handling: More robust error handling and validation.
+User Authentication: Implement user authentication and authorization.
+Getting Started
+Prerequisites
+Node.js (version 14 or later)
+PostgreSQL (version 13 or later)
+npm (version 6 or later)
+Installation.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+1. **Clone the Repository:** Clone the project repository to your local development environment using the following command:
+   ```
+   git clone https://github.com/MahdiManik/my-blog-app.git
+   ```
+2. **Run the command:** Open your termonal and run this command:
+   ```
+   npm i -f
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Run the project:** For run this project need to run this command
+    ```
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<!-- ------------------DEVELOPED BY Team-Unbeaten------------------- -->
 
-## Deploy on Vercel
+Thanks
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
